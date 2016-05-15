@@ -1,0 +1,173 @@
+{include="header"}
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#b_eliminar").click(function(event) {
+            event.preventDefault();
+            if( confirm("¿Realmente desea eliminar este registro?") )
+                window.location.href = 'index.php?page=gestion_acceso&codcliente={$fsc->cliente->codcliente}&delete={$fsc->acceso->idgestionacceso}';
+        });
+    });
+</script>
+<div class="container-fluid" style="margin-top: 10px; margin-bottom: 10px;">
+    <div class="row">
+        <div class="col-lg-1 col-md-1 col-sm-1">
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-9 text-right">
+            <a href="#" id="b_eliminar" class="btn btn-sm btn-danger">
+                <span class="glyphicon glyphicon-trash"></span>
+                 <span class="hidden-xs">&nbsp; Eliminar</span>
+            </a>
+
+        </div>
+    </div>
+</div>
+<div class="col-sm-12">
+            <h1 style="margin-top: 5px;margin-bottom: 5px;">
+               <a href="{$fsc->cliente->url()}">{$fsc->cliente->nombre}</a>
+            </h1>
+         </div>
+<div class="container-fluid" style="margin-top: 10px; margin-bottom: 10px;">
+    <div class="row">
+        
+        <div class="col-lg-1 col-md-1 col-sm-1"></div>
+        <div class="col-lg-10 col-md-10 col-sm-9">
+            <form class="form" role="form" name="f_nuevo_acceso" action="{$fsc->url()}&codacceso={$fsc->acceso->idgestionacceso}" method="post">
+                <input type="hidden" name="codcliente" value="{$fsc->cliente->codcliente}">
+                <input type="hidden" name="codagente" value="{$fsc->user->codagente}">        
+                <div class='panel {if="$fsc->cliente->debaja"}panel-danger{else}panel-primary{/if} pseudotab_cli' id='panel_generales'>
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Datos generales del cliente <span>{$fsc->cliente->nombre}</span></h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="container-fluid">
+
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        Concepto:
+                                        {if="$fsc->editar"}
+                                        <input class="form-control" type="text" name="ga_concepto" value="{$fsc->acceso->concepto}" autocomplete="off" maxlength="128">
+                                        {else}
+                                        <label class="form-control">{$fsc->acceso->concepto}</label>
+                                        {/if}
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        Descripción:
+                                        {if="$fsc->editar"}
+                                        <input class="form-control" type="text" name="ga_descripcion" value="{$fsc->acceso->descripcion}" autocomplete="off" maxlength="128">
+                                        {else}
+                                        <label class="form-control">{$fsc->acceso->descripcion}</label>
+                                        {/if}
+                                    </div>
+                                </div>                        
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        Usuario *:
+                                        {if="$fsc->editar"}
+                                        <input class="form-control" type="text" name="ga_usuario" value="{$fsc->acceso->usuario}" autocomplete="off" maxlength="128" required>
+                                        {else}
+                                        <label class="form-control">{$fsc->acceso->usuario}</label>
+                                        {/if}
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        IP del equipo:
+                                        {if="$fsc->editar"}
+                                        <input class="form-control" type="text" name="ga_ip" value="{$fsc->acceso->ip}" autocomplete="off" maxlength="39">
+                                        {else}
+                                        <label class="form-control">{$fsc->acceso->ip}</label>
+                                        {/if}
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        Teamviewer:
+                                        {if="$fsc->editar"}
+                                        <input class="form-control" type="text" name="ga_teamviewer" value="{$fsc->acceso->teamviewer}" autocomplete="off" maxlength="128">
+                                        {else}
+                                        <label class="form-control">{$fsc->acceso->teamviewer}</label>
+                                        {/if}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        hardware:
+                                        {if="$fsc->editar"}
+                                        <input class="form-control" type="text" name="ga_hardware" value="{$fsc->acceso->hardware}" autocomplete="off" maxlength="128">
+                                        {else}
+                                        <label class="form-control">{$fsc->acceso->hardware}</label>
+                                        {/if}
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        Password:
+                                        {if="$fsc->editar"}
+                                        <input class="form-control" type="text" name="ga_password" value="{$fsc->acceso->password}" autocomplete="off" maxlength="64">
+                                        {else}
+                                        <label class="form-control">{$fsc->acceso->password}</label>
+                                        {/if}
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        Splashtop:
+                                        {if="$fsc->editar"}
+                                        <input class="form-control" type="text" name="ga_splashtop" value="{$fsc->acceso->splashtop}" autocomplete="off" maxlength="64">
+                                        {else}
+                                        <label class="form-control">{$fsc->acceso->splashtop}</label>
+                                        {/if}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        Notas:
+                                        {if="$fsc->editar"}
+                                        <textarea class="form-control" name="ga_notas" rows="3">{$fsc->acceso->notas}</textarea>
+                                        {else}
+                                        <textarea readonly class="form-control">{$fsc->acceso->notas}</textarea>
+                                        {/if}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-footer text-right">
+                        <small class="pull-left">Fecha de alta del cliente: {$fsc->acceso->fechaalta}</small>
+                        <!--<button class="btn btn-sm btn-primary" type="submit" onclick="this.disabled=true;this.form.submit();">-->
+                        <button class="btn btn-sm btn-danger" onclick="goBack()">
+                    		<span class="glyphicon glyphicon-step-backward"></span> &nbsp; Atrás
+                		</button>
+                        {if condition="$fsc->editar == '1'"}
+                        <button class="btn btn-sm btn-primary" type="submit">
+                            <span class="glyphicon glyphicon-floppy-disk"></span> &nbsp; Guardar
+                        </button>
+                        <input type="hidden" name="ga_guardar" value="1">
+                        {else}
+                        <button class="btn btn-sm btn-primary" type="submit">
+                            <span class="glyphicon glyphicon-floppy-disk"></span> &nbsp; Editar
+                        </button>
+                        <input type="hidden" name="ga_editar" value="1">
+                        {/if}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+		<script>
+		function goBack() {
+                    window.history.go(-1);
+                }
+		</script>
+{include="footer"}

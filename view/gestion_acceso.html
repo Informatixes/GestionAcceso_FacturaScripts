@@ -1,0 +1,130 @@
+{include="header"}
+
+<style type="text/css" media="print">
+  .btn-group {
+display:none; }
+.row {
+display: none;
+}
+@media print {
+    a:link:after, a:visited:after {
+    content: "";
+    }
+}
+</style>
+<script type="text/javascript" language="javascript">
+onload=function(){
+var e=document.getElementById("refreshed");
+if(e.value=="no")e.value="yes";
+else{e.value="no";location.reload();}
+}
+
+</script>
+
+<input type="hidden" id="refreshed" value="no">
+
+<div class="container-fluid" style="margin-top: 10px; margin-bottom: 10px;">
+   <div class="row">
+       <div class="col-sm-6">
+            <h1 style="margin-top: 5px;">
+               <a href="{$fsc->cliente->url()}">{$fsc->cliente->nombre}</a>
+            </h1>
+         </div>
+      <div class="col-sm-8 col-xs-6">
+         <div class="btn-group hidden-xs">
+            <a class="btn btn-sm btn-default" href="{$fsc->url()}" title="Recargar la página">
+               <span class="glyphicon glyphicon-refresh"></span>
+            </a>
+            {if="$fsc->page->is_default()"}
+            <a class="btn btn-sm btn-default active" href="{$fsc->url()}&amp;default_page=FALSE" title="desmarcar como página de inicio">
+               <span class="glyphicon glyphicon-home"></span>
+            </a>
+            {else}
+            <a class="btn btn-sm btn-default" href="{$fsc->url()}&amp;default_page=TRUE" title="marcar como página de inicio">
+               <span class="glyphicon glyphicon-home"></span>
+            </a>
+            {/if}
+         </div>
+         <div class="btn-group">
+            <a class="btn btn-sm btn-success" href="index.php?page=nuevo_acceso&codcliente={$fsc->cliente->codcliente}">
+               <span class="glyphicon glyphicon-plus"></span>
+               <span class="hidden-xs">&nbsp; Nuevo</span>
+            </a>
+            {loop="$fsc->extensions"}
+               {if="$value->type=='button'"}
+               <a href="index.php?page={$value->from}{$value->params}" class="btn btn-sm btn-default">{$value->text}</a>
+               {/if}
+            {/loop}
+         </div>
+      </div>
+      <div class="col-sm-4 col-xs-6 text-right"><a href="javascript:window.print()">
+      	 <button type="button" class="btn btn-sm btn-default">
+               <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+            </button></a>
+      </div>
+   </div>
+   
+</div>
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th></th>
+                <th class="text-left">Concepto</th>
+                <th class="text-left">Descripcion</th>
+                <th class="text-left">Usuario</th>
+                <th class="text-left">IP</th>
+                <th class="text-left">Teamviewer</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {loop="$fsc->resultados"}
+            <tr>
+                <td/>
+                <td>
+                    {$value->concepto}
+                </td>
+                <td>
+                    {$value->descripcion}
+                </td>
+                <td>
+                    <a href="{$value->url()}">{$value->usuario}</a>
+                </td>
+                <td>
+                    {$value->ip}
+                </td>
+                <td>
+                    {$value->teamviewer}
+                </td>
+                <td/>
+            </tr>
+
+        {else}
+        <tr class="warning">
+            <td></td>
+            <td colspan="6">Ningún acceso encontrado. Pulsa el botón <b>Nuevo</b> para crear uno.</td>
+        </tr>
+        {/loop}
+        
+        </tbody>
+    </table>
+</div>
+
+<div class="container-fluid">
+   <div class="row">
+      <div class="col-sm-12 text-center">
+         <ul class="pagination">
+            {loop="$fsc->paginas()"}
+            <li{if="$value['actual']"} class="active"{/if}>
+               <a href="{$value['url']}">{$value['num']}</a>
+            </li>
+            {/loop}
+         </ul>
+      </div>
+   </div>
+</div>
+
+
+
+{include="footer"}

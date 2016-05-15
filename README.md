@@ -1,12 +1,10 @@
-# GestionAcceso_FacturaScripts
-Gestion Equipos en Facturascripts
-Este es el plugin gestion de acceso cuyo objetivo es la administraci√≥n de los equipos Cliente.
-Es un plugin gratuito, asi que no est√° muy adaptado a cualquier usuario.
+Este es el plugin gestion de acceso cuyo objetivo es la administraciÛn de los equipos Cliente.
+Es un plugin gratuito, asi que no est· muy adaptado a cualquier usuario.
 Tiene unos parametros que a nosotros nos resultan suficiente.
-Primero tiene un listado dentro del cliente (gesti√≥n de acceso) para ver todas las m√°quinas con los datos mas relevantes (COncepto, Descripci√≥n, Usuario, IP, Teamviewer).
+Primero tiene un listado dentro del cliente (gestiÛn de acceso) para ver todas las m·quinas con los datos mas relevantes (COncepto, DescripciÛn, Usuario, IP, Teamviewer).
 Y dentro de cada ficha de Usuario:
  - Concepto (PC, Servidor, MV, ...)
- - Descripci√≥n
+ - DescripciÛn
  - Usuario
  - IP del equipo
  - Teamviewer (para tener la ID)

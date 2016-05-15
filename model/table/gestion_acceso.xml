@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document   : gestion_acceso.xml
+    Description:
+        Estructura de la tabla gestion_acceso.
+-->
+<tabla>
+    <columna>
+        <nombre>idgestionacceso</nombre>
+        <tipo>serial</tipo>
+        <nulo>NO</nulo>
+        <defecto>nextval('gestion_acceso_idgestionacceso_seq'::regclass)</defecto>
+    </columna>
+    <columna>
+        <nombre>codcliente</nombre>
+        <tipo>varchar(6)</tipo>
+        <nulo>NO</nulo>
+    </columna>
+    <columna>
+        <nombre>codagente</nombre>
+        <tipo>varchar(10)</tipo>
+        <nulo>NO</nulo>
+    </columna>
+    <columna>
+        <nombre>concepto</nombre>
+        <tipo>varchar(128)</tipo>
+        <nulo>NO</nulo>
+    </columna>
+    <columna>
+        <nombre>descripcion</nombre>
+        <tipo>varchar(128)</tipo>
+        <nulo>NO</nulo>
+    </columna>
+    <columna>
+        <nombre>usuario</nombre>
+        <tipo>varchar(128)</tipo>
+        <nulo>NO</nulo>
+    </columna>
+    <columna>
+        <nombre>ip</nombre>
+        <tipo>varchar(39)</tipo>
+        <nulo>NO</nulo>
+    </columna>
+    <columna>
+        <nombre>teamviewer</nombre>
+        <tipo>varchar(128)</tipo>
+        <nulo>NO</nulo>
+    </columna>
+    <columna>
+        <nombre>hardware</nombre>
+        <tipo>varchar(128)</tipo>
+        <nulo>NO</nulo>
+    </columna>
+    <columna>
+        <nombre>password</nombre>
+        <tipo>blob</tipo>
+        <nulo>NO</nulo>
+    </columna>
+    <columna>
+        <nombre>splashtop</nombre>
+        <tipo>varchar(64)</tipo>
+        <nulo>NO</nulo>
+    </columna>
+    <columna>
+        <nombre>notas</nombre>
+        <tipo>varchar(1000)</tipo>
+        <nulo>NO</nulo>
+    </columna>
+    <columna>
+        <nombre>fechaalta</nombre>
+        <tipo>timestamp</tipo>
+        <nulo>YES</nulo>
+    </columna>
+    <restriccion>
+        <nombre>gestion_acceso_pkey</nombre>
+        <consulta>PRIMARY KEY (idgestionacceso)</consulta>
+    </restriccion>
+</tabla>
